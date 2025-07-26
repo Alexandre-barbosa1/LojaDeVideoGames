@@ -1,4 +1,5 @@
 package entidades;
+
 public class Jogo extends Produto {
     private String genero;
 

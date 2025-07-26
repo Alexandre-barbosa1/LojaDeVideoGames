@@ -12,7 +12,6 @@ import java.io.IOException;
 public class Janela_2_Controller {
     @FXML
     protected void onOpenBackWindowButtonClick(ActionEvent event) throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Janela-1.fxml"));
         Scene firstScene = new Scene(fxmlLoader.load());
         Stage currentStage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

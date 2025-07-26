@@ -11,7 +11,7 @@ public class GamesApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(GamesApplication.class.getResource("Janela-1.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         stage.setTitle("The Gamer's House");
         stage.setScene(scene);
         stage.show();
@@ -20,4 +20,5 @@ public class GamesApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
+
 }

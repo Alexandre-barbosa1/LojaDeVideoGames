@@ -1,5 +1,12 @@
 package com.alexandrebarbosa.lojadevideogames;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 public class Navegacao {
     public static class Bloco {
         public String fxml;
@@ -25,5 +32,12 @@ public class Navegacao {
         } else {
             topo = topo.ant;
         }
+    }
+    public static void caminho(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Navegacao.class.getResource(Navegacao.topo.fxml));
+        Scene cenaAnterior = new Scene(fxmlLoader.load());
+        Stage stageAtual = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stageAtual.setScene(cenaAnterior);
+        stageAtual.show();
     }
 }

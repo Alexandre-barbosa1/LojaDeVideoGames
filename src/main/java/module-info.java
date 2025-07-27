@@ -4,5 +4,6 @@ module com.alexandrebarbosa.lojadevideogames {
 
 
     opens com.alexandrebarbosa.lojadevideogames to javafx.fxml;
+    opens entidades to javafx.base;
     exports com.alexandrebarbosa.lojadevideogames;
 }

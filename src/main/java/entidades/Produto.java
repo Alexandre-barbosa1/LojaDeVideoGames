@@ -6,12 +6,12 @@ public abstract class Produto {
     private String codigo;
     private String descricao;
     private String marca;
-    private int valorEntrada;
-    private int valorSaida;
+    private double valorEntrada;
+    private double valorSaida;
     private int qtdEstoque;
     private String nome;
 
-    public Produto(String codigo, String descricao, String marca, int valorEntrada, int valorSaida, int qtdEstoque,
+    public Produto(String codigo, String descricao, String marca, double valorEntrada, double valorSaida, int qtdEstoque,
                    String nome) {
         this.codigo = codigo;
         this.descricao = descricao;
@@ -46,7 +46,7 @@ public abstract class Produto {
         this.marca = marca;
     }
 
-    public int getValorEntrada() {
+    public double getValorEntrada() {
         return valorEntrada;
     }
 
@@ -54,7 +54,7 @@ public abstract class Produto {
         this.valorEntrada = valorEntrada;
     }
 
-    public int getValorSaida() {
+    public double getValorSaida() {
         return valorSaida;
     }
 
@@ -76,5 +76,18 @@ public abstract class Produto {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "codigo='" + codigo + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", marca='" + marca + '\'' +
+                ", valorEntrada=" + valorEntrada +
+                ", valorSaida=" + valorSaida +
+                ", qtdEstoque=" + qtdEstoque +
+                ", nome='" + nome + '\'' +
+                '}';
     }
 }

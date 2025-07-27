@@ -3,13 +3,18 @@ package com.alexandrebarbosa.lojadevideogames;
 import entidades.Jogo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class Janela_2_Controller {
+public class Janela_2_Controller implements Initializable {
 
     public static List<Jogo> jogos = new ArrayList<>();
     @FXML
@@ -39,17 +44,29 @@ public class Janela_2_Controller {
 
     @FXML
     public void adicionarInfo() {
-        String codigo = texto1.getText();
-        String nome = texto2.getText();
-        String genero = texto3.getText();
-        String marca = texto4.getText();
-        String descricao = texto5.getText();
-        double valorEntrada = Double.parseDouble(texto6.getText());
-        double valorSaida = Double.parseDouble(texto7.getText());
-        int quantidade = Integer.parseInt(texto8.getText());
-        Jogo jogo = new Jogo(codigo, descricao, marca, valorEntrada, valorSaida, quantidade, nome, genero);
-        label1.setText("JOGO ADICIONADO!");
-        jogos.add(jogo);
+        try {
+            String codigo = texto1.getText();
+            String nome = texto2.getText();
+            String genero = texto3.getText();
+            String marca = texto4.getText();
+            String descricao = texto5.getText();
+            double valorEntrada = Double.parseDouble(texto6.getText());
+            double valorSaida = Double.parseDouble(texto7.getText());
+            int quantidade = Integer.parseInt(texto8.getText());
+            Jogo jogo = new Jogo(codigo, descricao, marca, valorEntrada, valorSaida, quantidade, nome, genero);
+            label1.setText("JOGO ADICIONADO!");
+            jogos.add(jogo);
+        } catch (NumberFormatException e) {
+            Alertas.showAlert("Erro", "Campos incompletos", "Digite todos os campos", Alert.AlertType.WARNING);
+        }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Limitacoes.setTextFieldDouble(texto6);
+        Limitacoes.setTextFieldDouble(texto7);
+        Limitacoes.setTextFieldInteger(texto8);
+
+
+    }
 }

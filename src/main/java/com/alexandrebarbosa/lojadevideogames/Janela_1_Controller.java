@@ -13,12 +13,21 @@ import java.io.IOException;
 
 public class Janela_1_Controller {
     @FXML
-    protected void Voltar(ActionEvent event) throws IOException {
+    protected void btAdicionarJogos(ActionEvent event) throws IOException {
             Navegacao.add("Janela-2.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Navegacao.topo.fxml));
             Scene cenaAnterior = new Scene(fxmlLoader.load());
             Stage stageAtual = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stageAtual.setScene(cenaAnterior);
             stageAtual.show();
+    }
+    @FXML
+    protected void btListaDeJogos(ActionEvent event) throws IOException {
+        Navegacao.add("Janela-3.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Navegacao.topo.fxml));
+        Scene cenaAnterior = new Scene(fxmlLoader.load());
+        Stage stageAtual = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stageAtual.setScene(cenaAnterior);
+        stageAtual.show();
     }
 }

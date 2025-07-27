@@ -36,7 +36,7 @@ public class Janela_2_Controller {
     private Label label1;
 
     @FXML
-    protected void Voltar2(ActionEvent event) throws IOException {
+    protected void VoltarJ2(ActionEvent event) throws IOException {
         Navegacao.remover();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(Navegacao.topo.fxml));
         Scene cenaAnterior = new Scene(fxmlLoader.load());

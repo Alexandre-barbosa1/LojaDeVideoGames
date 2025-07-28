@@ -5,13 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogos;
 
@@ -40,6 +37,7 @@ public class Janela_3_Controller {
     private TableColumn<Jogo, Double> colunaValorSaida;
     @FXML
     private TableColumn<Jogo, Integer> colunaQuantidadeEstoque;
+
     @FXML
     public void initialize() {
         colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -50,18 +48,52 @@ public class Janela_3_Controller {
         colunaValorEntrada.setCellValueFactory(new PropertyValueFactory<>("valorEntrada"));
         colunaValorSaida.setCellValueFactory(new PropertyValueFactory<>("valorSaida"));
         colunaQuantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEstoque"));
-
         ObservableList<Jogo> dados = FXCollections.observableArrayList(jogos);
         tabelaItens.setItems(dados);
+        mostrarTextoOculto(colunaCodigo);
+        mostrarTextoOculto(colunaNome);
+        mostrarTextoOculto(colunaGenero);
+        mostrarTextoOculto(colunaMarca);
+        mostrarTextoOculto(colunaDescricao);
+        mostrarTextoOculto(colunaValorEntrada);
+        mostrarTextoOculto(colunaValorSaida);
+        mostrarTextoOculto(colunaQuantidadeEstoque);
     }
+
+
     @FXML
     public void ordenarPorCodigo(ActionEvent actionEvent) {
         MergeSortLista.mergeSortPorCodigo(jogos);
         initialize();
     }
+
     @FXML
     public void ordenarPorNome(ActionEvent actionEvent) {
         MergeSortLista.mergeSortPorNome(jogos);
         initialize();
     }
+
+
+    private <S, T> void mostrarTextoOculto(TableColumn<S, T> coluna) {
+        coluna.setCellFactory(tc -> {
+            TableCell<S, T> cell = new TableCell<>();
+            Tooltip tooltip = new Tooltip();
+
+            cell.itemProperty().addListener((obs, oldValue, newValue) -> {
+                if (newValue == null) {
+                    cell.setText("");
+                    cell.setTooltip(null);
+                } else {
+                    String texto = newValue.toString();
+                    cell.setText(texto);
+                    tooltip.setText(texto);
+                    cell.setTooltip(tooltip);
+                }
+            });
+
+            return cell;
+        });
+    }
+
+
 }

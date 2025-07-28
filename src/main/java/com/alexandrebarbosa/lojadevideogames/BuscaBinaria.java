@@ -6,6 +6,7 @@ import java.util.List;
 
 public class BuscaBinaria {
     public static boolean buscaBinariaCodigo(List<Jogo> lista, String codigo) {
+        MergeSortLista.mergeSortPorCodigo(lista);
         int inicio = 0;
         int fim = lista.size() - 1;
 

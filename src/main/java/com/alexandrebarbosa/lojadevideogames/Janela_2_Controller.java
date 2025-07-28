@@ -58,9 +58,14 @@ public class Janela_2_Controller implements Initializable {
             double valorSaida = Double.parseDouble(texto7.getText());
             int quantidade = Integer.parseInt(texto8.getText());
             Jogo jogo = new Jogo(codigo, descricao, marca, valorEntrada, valorSaida, quantidade, nome, genero);
-            label1.setText("JOGO ADICIONADO!");
-            jogos.add(jogo);
-            limpar();
+            if (BuscaBinariaCodigo.buscaBinaria(jogos, codigo)) {
+                Alertas.showAlert("Erro", "Codigo ja inserido", "Digite um código válido", Alert.AlertType.WARNING);
+                limpar();
+            } else {
+                jogos.add(jogo);
+                label1.setText("JOGO ADICIONADO!");
+                limpar();
+            }
         } catch (NumberFormatException e) {
             Alertas.showAlert("Erro", "Campos incompletos", "Digite todos os campos", Alert.AlertType.WARNING);
         }

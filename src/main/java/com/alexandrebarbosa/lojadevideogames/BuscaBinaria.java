@@ -4,8 +4,8 @@ import entidades.Jogo;
 
 import java.util.List;
 
-public class BuscaBinariaCodigo {
-    public static boolean buscaBinaria(List<Jogo> lista, String codigo) {
+public class BuscaBinaria {
+    public static boolean buscaBinariaCodigo(List<Jogo> lista, String codigo) {
         int inicio = 0;
         int fim = lista.size() - 1;
 

@@ -49,6 +49,9 @@ public class Janela_2_Controller implements Initializable {
     @FXML
     public void adicionarInfo() {
         try {
+            texto1.setOnMouseClicked(event -> {
+                label1.setText("");
+            });
             String codigo = texto1.getText();
             String nome = texto2.getText();
             String genero = texto3.getText();
@@ -58,7 +61,7 @@ public class Janela_2_Controller implements Initializable {
             double valorSaida = Double.parseDouble(texto7.getText());
             int quantidade = Integer.parseInt(texto8.getText());
             Jogo jogo = new Jogo(codigo, descricao, marca, valorEntrada, valorSaida, quantidade, nome, genero);
-            if (BuscaBinariaCodigo.buscaBinaria(jogos, codigo)) {
+            if (BuscaBinaria.buscaBinariaCodigo(jogos, codigo)) {
                 Alertas.showAlert("Erro", "Codigo ja inserido", "Digite um código válido", Alert.AlertType.WARNING);
                 limpar();
             } else {

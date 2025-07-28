@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -37,6 +38,9 @@ public class Janela_2_Controller implements Initializable {
     private Label label1;
 
     @FXML
+    private Button botao1;
+
+    @FXML
     protected void VoltarJ2(ActionEvent event) throws IOException {
         Navegacao.remover();
         Navegacao.caminho(event);
@@ -56,6 +60,7 @@ public class Janela_2_Controller implements Initializable {
             Jogo jogo = new Jogo(codigo, descricao, marca, valorEntrada, valorSaida, quantidade, nome, genero);
             label1.setText("JOGO ADICIONADO!");
             jogos.add(jogo);
+            limpar();
         } catch (NumberFormatException e) {
             Alertas.showAlert("Erro", "Campos incompletos", "Digite todos os campos", Alert.AlertType.WARNING);
         }
@@ -68,5 +73,16 @@ public class Janela_2_Controller implements Initializable {
         Limitacoes.setTextFieldInteger(texto8);
 
 
+    }
+
+    public void limpar() {
+        texto1.clear();
+        texto2.clear();
+        texto3.clear();
+        texto4.clear();
+        texto5.clear();
+        texto6.clear();
+        texto7.clear();
+        texto8.clear();
     }
 }

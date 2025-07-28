@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_4_Controller">
+    <children>
+        <TableView fx:id="tabelaItens" layoutX="15.0" layoutY="202.0" prefHeight="56.0" prefWidth="471.0">
+            <columns>
+                <TableColumn fx:id="colunaCodigo" prefWidth="53.0" text="Código" />
+                <TableColumn fx:id="colunaNome" prefWidth="55.0" text="Nome" />
+                <TableColumn fx:id="colunaGenero" prefWidth="62.0" text="Genero" />
+                <TableColumn fx:id="colunaMarca" prefWidth="57.0" text="Marca" />
+                <TableColumn fx:id="colunaDescricao" prefWidth="73.0" text="Descrição" />
+                <TableColumn fx:id="colunaValorEntrada" prefWidth="110.0" sortable="false" text="Valor de entrada" />
+                <TableColumn fx:id="colunaValorSaida" prefWidth="92.0" text="Valor de saída" />
+                <TableColumn fx:id="colunaQuantidadeEstoque" prefWidth="140.0" text="Quantidade no Estoque" />
+            </columns>
+        </TableView>
+      <Button fx:id="voltarj3" layoutX="14.0" layoutY="14.0" onAction="#VoltarJ3" text="Voltar" />
+      <Button layoutX="11.0" layoutY="412.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Editar caracteristicas do jogo" />
+      <Button layoutX="235.0" layoutY="412.0" mnemonicParsing="false" text="vender jogo" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <TextField fx:id="texto1" layoutX="161.0" layoutY="81.0" promptText="buscar jogo" />
+      <Button layoutX="251.0" layoutY="126.0" mnemonicParsing="false" onAction="#buscarPorCodigo" text="buscar jogo por código" />
+      <Button layoutX="387.0" layoutY="412.0" mnemonicParsing="false" text="repor jogo" />
+      <Button layoutX="80.0" layoutY="126.0" mnemonicParsing="false" onAction="#buscarPorNome" text="buscar jogo por nome" />
+    </children>
+</AnchorPane>

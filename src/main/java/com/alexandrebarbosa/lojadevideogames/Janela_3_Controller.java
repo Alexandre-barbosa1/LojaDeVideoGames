@@ -5,13 +5,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogos;
 
 public class Janela_3_Controller {
     @FXML
@@ -38,7 +40,7 @@ public class Janela_3_Controller {
     private TableColumn<Jogo, Double> colunaValorSaida;
     @FXML
     private TableColumn<Jogo, Integer> colunaQuantidadeEstoque;
-
+    @FXML
     public void initialize() {
         colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -49,7 +51,17 @@ public class Janela_3_Controller {
         colunaValorSaida.setCellValueFactory(new PropertyValueFactory<>("valorSaida"));
         colunaQuantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEstoque"));
 
-        ObservableList<Jogo> dados = FXCollections.observableArrayList(Janela_2_Controller.jogos);
+        ObservableList<Jogo> dados = FXCollections.observableArrayList(jogos);
         tabelaItens.setItems(dados);
+    }
+    @FXML
+    public void ordenarPorCodigo(ActionEvent actionEvent) {
+        MergeSortLista.mergeSortPorCodigo(jogos);
+        initialize();
+    }
+    @FXML
+    public void ordenarPorNome(ActionEvent actionEvent) {
+        MergeSortLista.mergeSortPorNome(jogos);
+        initialize();
     }
 }

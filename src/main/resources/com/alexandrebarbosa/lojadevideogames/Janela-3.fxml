@@ -21,7 +21,7 @@
                 <TableColumn fx:id="colunaQuantidadeEstoque" prefWidth="140.0" text="Quantidade no Estoque" />
             </columns>
         </TableView>
-      <Button fx:id="voltarj3" layoutX="14.0" layoutY="14.0" onAction="#VoltarJ3" text="Voltar" />
+      <Button fx:id="voltarj3" layoutX="14.0" layoutY="14.0" onAction="#Voltar" text="Voltar" />
       <Button layoutX="14.0" layoutY="412.0" mnemonicParsing="false" onAction="#ordenarPorNome" prefHeight="25.0" prefWidth="123.0" text="Ordenar por nome" />
       <Button layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#ordenarPorCodigo" text="Ordenar por Código" />
       <TextField fx:id="textAumento" layoutX="182.0" layoutY="461.0" prefHeight="25.0" prefWidth="110.0" />

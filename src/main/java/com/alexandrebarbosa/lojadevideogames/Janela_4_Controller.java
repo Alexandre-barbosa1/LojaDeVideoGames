@@ -23,7 +23,7 @@ public class Janela_4_Controller {
     int indice = 0;
 
     @FXML
-    protected void VoltarJ3(ActionEvent event) throws IOException {
+    protected void Voltar(ActionEvent event) throws IOException {
         Navegacao.remover();
         Navegacao.caminho(event);
     }

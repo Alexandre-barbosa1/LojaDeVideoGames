@@ -14,7 +14,7 @@ import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogos;
 
 public class Janela_3_Controller {
     @FXML
-    protected void VoltarJ3(ActionEvent event) throws IOException {
+    protected void Voltar(ActionEvent event) throws IOException {
         Navegacao.remover();
         Navegacao.caminho(event);
     }

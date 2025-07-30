@@ -23,6 +23,11 @@ public class Janela_1_Controller {
         Navegacao.add("Janela-4.fxml");
         Navegacao.caminho(event);
     }
+    @FXML
+    protected void btRelatorioEstoque(ActionEvent event) throws IOException {
+        Navegacao.add("Janela-6.fxml");
+        Navegacao.caminho(event);
+    }
 
 
 }

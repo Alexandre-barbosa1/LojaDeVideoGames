@@ -40,7 +40,7 @@ public class Janela_5_Controller implements Initializable {
     private Button botao1;
 
     @FXML
-    protected void VoltarJ2(ActionEvent event) throws IOException {
+    protected void Voltar(ActionEvent event) throws IOException {
         Navegacao.remover();
         Navegacao.caminho(event);
     }

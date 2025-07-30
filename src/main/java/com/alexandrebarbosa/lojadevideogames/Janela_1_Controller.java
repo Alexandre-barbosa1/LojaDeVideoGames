@@ -17,9 +17,12 @@ public class Janela_1_Controller {
         Navegacao.add("Janela-3.fxml");
         Navegacao.caminho(event);
     }
+
     @FXML
     protected void btBuscarJogo(ActionEvent event) throws IOException {
         Navegacao.add("Janela-4.fxml");
         Navegacao.caminho(event);
     }
+
+
 }

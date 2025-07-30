@@ -19,6 +19,8 @@ import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogos;
 
 public class Janela_4_Controller {
     List<Jogo> listaParaTabela = new ArrayList<>();
+    Jogo jogoBuscado = null;
+    int indice = 0;
 
     @FXML
     protected void VoltarJ3(ActionEvent event) throws IOException {
@@ -61,11 +63,15 @@ public class Janela_4_Controller {
 
     @FXML
     public void buscarPorCodigo() {
+        listaParaTabela.clear();
+        limpar();
+
         String codigo = texto1.getText();
         listaParaTabela.clear();
         limpar();
         if (BuscaBinaria.buscaBinariaCodigo(codigo)) {
             Jogo jogoBuscado = BuscaBinaria.mostrarJogoPorCodigo();
+            indice = BuscaBinaria.mostrarIndice();
             listaParaTabela.add(jogoBuscado);
             ObservableList<Jogo> dadosNaTabela = FXCollections.observableArrayList(listaParaTabela);
             tabelaItens.setItems(dadosNaTabela);
@@ -78,12 +84,13 @@ public class Janela_4_Controller {
 
     @FXML
     public void buscarPorNome() {
-        String nome = texto1.getText();
         listaParaTabela.clear();
         limpar();
+        String nome = texto1.getText();
         if (BuscaBinaria.buscaBinariaNome(nome)) {
             Jogo jogoBuscado = BuscaBinaria.mostrarJogoPorNome();
             listaParaTabela.add(jogoBuscado);
+            indice = BuscaBinaria.mostrarIndice();
             ObservableList<Jogo> dadosNaTabela = FXCollections.observableArrayList(listaParaTabela);
             tabelaItens.setItems(dadosNaTabela);
         } else {
@@ -93,6 +100,19 @@ public class Janela_4_Controller {
 
     }
 
+    @FXML
+    protected void btEditarJogo(ActionEvent event) throws IOException {
+        if (texto1.getText().equalsIgnoreCase("")) {
+            Alertas.showAlert("Erro", "Nome não encontrado", "Digite um nome válido", Alert.AlertType.WARNING);
+        } else {
+            listaParaTabela.clear();
+            limpar();
+            Navegacao.add("Janela-5.fxml");
+            Navegacao.caminho(event);
+        }
+    }
+
+    @FXML
     public void limpar() {
         tabelaItens.setItems(FXCollections.observableArrayList());
     }

@@ -22,7 +22,7 @@
             </columns>
         </TableView>
       <Button fx:id="voltarj3" layoutX="14.0" layoutY="14.0" onAction="#VoltarJ3" text="Voltar" />
-      <Button layoutX="11.0" layoutY="412.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Editar caracteristicas do jogo" />
+      <Button layoutX="11.0" layoutY="412.0" mnemonicParsing="false" onAction="#btEditarJogo" prefHeight="25.0" prefWidth="175.0" text="Editar caracteristicas do jogo" />
       <Button layoutX="235.0" layoutY="412.0" mnemonicParsing="false" text="vender jogo" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <TextField fx:id="texto1" layoutX="161.0" layoutY="81.0" promptText="buscar jogo" />

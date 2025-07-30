@@ -50,7 +50,7 @@ public abstract class Produto {
         return valorEntrada;
     }
 
-    public void setValorEntrada(int valorEntrada) {
+    public void setValorEntrada(double valorEntrada) {
         this.valorEntrada = valorEntrada;
     }
 
@@ -58,7 +58,7 @@ public abstract class Produto {
         return valorSaida;
     }
 
-    public void setValorSaida(int valorSaida) {
+    public void setValorSaida(double valorSaida) {
         this.valorSaida = valorSaida;
     }
 

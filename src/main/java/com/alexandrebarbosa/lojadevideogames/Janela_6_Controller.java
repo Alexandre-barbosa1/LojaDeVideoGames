@@ -36,7 +36,6 @@ public class Janela_6_Controller {
         }
         totalEstoque.setText("Total de estoque: " + total);
     }
-
     @FXML
     protected void Voltar(ActionEvent event) throws IOException {
         Navegacao.remover();

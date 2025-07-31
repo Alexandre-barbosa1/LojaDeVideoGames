@@ -18,6 +18,7 @@ import java.util.List;
 import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogos;
 
 public class Janela_4_Controller {
+    public double vendas = 0;
     List<Jogo> listaParaTabela = new ArrayList<>();
     Jogo jogoBuscado = null;
     int indice = 0;
@@ -48,6 +49,8 @@ public class Janela_4_Controller {
     private TableColumn<Jogo, Double> colunaValorSaida;
     @FXML
     private TableColumn<Jogo, Integer> colunaQuantidadeEstoque;
+    @FXML
+    private TextField texto2;
 
     @FXML
     public void initialize() {
@@ -65,7 +68,6 @@ public class Janela_4_Controller {
     public void buscarPorCodigo() {
         listaParaTabela.clear();
         limpar();
-
         String codigo = texto1.getText();
         listaParaTabela.clear();
         limpar();
@@ -113,12 +115,22 @@ public class Janela_4_Controller {
     }
 
     @FXML
+    protected void btVenderJogo(ActionEvent event) throws IOException {
+        try {
+            int quantEscolhida = Integer.parseInt(texto2.getText());
+            if (jogos.get(indice).getQuantidadeEstoque() <= 0) {
+                Alertas.showAlert("Erro", "Estoque vazio", "O estoque está vazio", Alert.AlertType.WARNING);
+            } else {
+                jogos.get(indice).setQuantidadeEstoque(jogos.get(indice).getQuantidadeEstoque() - quantEscolhida);
+                tabelaItens.refresh();
+            }
+        } catch (NumberFormatException e) {
+            Alertas.showAlert("Erro", "Campo de Quantidade Inválido", "Por favor, digite uma quantidade numérica válida.", Alert.AlertType.WARNING);
+        }
+    }
+
+    @FXML
     public void limpar() {
         tabelaItens.setItems(FXCollections.observableArrayList());
     }
-
-
 }
-
-
-

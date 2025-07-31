@@ -22,5 +22,5 @@
     <Label layoutX="290.0" layoutY="143.0" text="Valor de entrada" />
     <Label layoutX="290.0" layoutY="203.0" text="Valor de saída" />
     <Label layoutX="290.0" layoutY="263.0" text="Quantidade" />
-   <Label fx:id="label1" layoutX="185.0" layoutY="378.0" prefHeight="43.0" prefWidth="131.0" />
+   <Label fx:id="label1" layoutX="157.0" layoutY="377.0" prefHeight="43.0" prefWidth="186.0" />
 </AnchorPane>

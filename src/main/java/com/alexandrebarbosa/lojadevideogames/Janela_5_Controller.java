@@ -64,7 +64,6 @@ public class Janela_5_Controller implements Initializable {
             jogos.get(indice).setValorEntrada(valorEntrada);
             jogos.get(indice).setValorSaida(valorSaida);
             label1.setText("JOGO editado com sucesso!");
-            limpar();
         } catch (
                 NumberFormatException e) {
             Alertas.showAlert("Erro", "Campos incompletos", "Digite todos os campos", Alert.AlertType.WARNING);
@@ -88,7 +87,6 @@ public class Janela_5_Controller implements Initializable {
         texto7.clear();
         texto8.clear();
     }
-
     public void mostrarJogo() {
         texto2.setText(jogos.get(indice).getNome());
         texto3.setText(jogos.get(indice).getGenero());

@@ -2,14 +2,17 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_3_Controller">
+<AnchorPane prefHeight="428.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_3_Controller">
     <children>
-        <TableView fx:id="tabelaItens" layoutX="15.0" layoutY="58.0" prefHeight="331.0" prefWidth="471.0">
+        <TableView fx:id="tabelaItens" layoutX="15.0" layoutY="58.0" prefHeight="194.0" prefWidth="470.0">
             <columns>
                 <TableColumn fx:id="colunaCodigo" prefWidth="53.0" text="Código" />
                 <TableColumn fx:id="colunaNome" prefWidth="55.0" text="Nome" />
@@ -22,15 +25,36 @@
             </columns>
         </TableView>
       <Button fx:id="voltarj3" layoutX="14.0" layoutY="14.0" onAction="#Voltar" text="Voltar" />
-      <Button layoutX="14.0" layoutY="412.0" mnemonicParsing="false" onAction="#ordenarPorNome" prefHeight="25.0" prefWidth="123.0" text="Ordenar por nome" />
-      <Button layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#ordenarPorCodigo" text="Ordenar por Código" />
-      <TextField fx:id="textAumento" layoutX="182.0" layoutY="461.0" prefHeight="25.0" prefWidth="110.0" />
-      <TextField fx:id="textDesconto" layoutX="182.0" layoutY="412.0" prefHeight="25.0" prefWidth="110.0" />
-      <Button fx:id="btPercentualDes" layoutX="302.0" layoutY="412.0" mnemonicParsing="false" text="Valor Percentual" />
-      <Label layoutX="182.0" layoutY="395.0" text="Aplicar desconto" />
-      <Button fx:id="btPercentualAum" layoutX="302.0" layoutY="461.0" mnemonicParsing="false" text="Valor Percentual" />
-      <Label layoutX="183.0" layoutY="444.0" text="Aplicar aumento" />
-      <Button fx:id="btFixoDes" layoutX="417.0" layoutY="412.0" mnemonicParsing="false" text="Valor Fixo" />
-      <Button fx:id="btFixoAum" layoutX="417.0" layoutY="461.0" mnemonicParsing="false" text="Valor Fixo" />
+      <Button layoutX="15.0" layoutY="267.0" mnemonicParsing="false" onAction="#ordenarPorNome" prefHeight="25.0" prefWidth="123.0" text="Ordenar por nome" />
+      <Button layoutX="15.0" layoutY="294.0" mnemonicParsing="false" onAction="#ordenarPorCodigo" text="Ordenar por Código" />
+      <TextField fx:id="textValor" layoutX="259.0" layoutY="267.0" prefHeight="25.0" prefWidth="110.0" />
+      <Label layoutX="163.0" layoutY="271.0" text="Valor do ajuste:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="292.0" text="Tipo:" />
+      <Label layoutX="198.0" layoutY="352.0" text="Formato:" />
+      <Button layoutX="337.0" layoutY="357.0" mnemonicParsing="false" onAction="#btAplicarAjuste" prefHeight="25.0" prefWidth="148.0" text="Aplicar ajuste em todos" />
+      <RadioButton fx:id="rbtDesconto" layoutX="228.0" layoutY="312.0" mnemonicParsing="false" text="Desconto">
+         <toggleGroup>
+            <ToggleGroup fx:id="Tipo" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbtAumento" layoutX="228.0" layoutY="332.0" mnemonicParsing="false" text="Aumento" toggleGroup="$Tipo" />
+      <RadioButton fx:id="rbtPercentual" layoutX="228.0" layoutY="392.0" mnemonicParsing="false" text="Percentual">
+         <toggleGroup>
+            <ToggleGroup fx:id="Formato" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbtFixo" layoutX="228.0" layoutY="372.0" mnemonicParsing="false" text="Fixo" toggleGroup="$Formato" />
+      <RadioButton fx:id="rbtPrecoAtual" layoutX="376.0" layoutY="332.0" mnemonicParsing="false" text="Preço atual">
+         <toggleGroup>
+            <ToggleGroup fx:id="AplicarSobre" />
+         </toggleGroup>
+      </RadioButton>
+      <Label fx:id="textAplicarSobre" layoutX="346.0" layoutY="292.0" text="Aplicar sobre:" />
+      <RadioButton fx:id="rbtPrecoOriginal" layoutX="376.0" layoutY="312.0" mnemonicParsing="false" text="Preço Original" toggleGroup="$AplicarSobre" />
+      <Button layoutX="337.0" layoutY="384.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" onAction="#btLimparAjustes" text="Limpar ajustes aplicados" />
     </children>
 </AnchorPane>

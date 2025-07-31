@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 public class Janela_2_Controller implements Initializable {
 
     public static List<Jogo> jogos = new ArrayList<>();
+    public static List<Jogo> jogosOriginal = new ArrayList<>();
     @FXML
     private TextField texto1;
     @FXML

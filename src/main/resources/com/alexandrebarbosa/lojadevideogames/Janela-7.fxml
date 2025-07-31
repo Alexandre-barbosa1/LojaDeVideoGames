@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_6_Controller">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_7_Controller">
    <children>
        <TableView fx:id="tabelaItens" layoutX="14.0" layoutY="57.0" prefHeight="383.0" prefWidth="319.0">
            <columns>
                <TableColumn fx:id="colunaNome" prefWidth="171.0" text="Nome" />
-               <TableColumn fx:id="colunaQuantidadeEstoque" prefWidth="147.0" text="Quantidade no Estoque" />
+               <TableColumn fx:id="colunaQuantidadeEstoque" onEditStart="#initialize" prefWidth="147.0" text="Quantidade no Estoque" />
            </columns>
        </TableView>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Voltar" text="Voltar" />

@@ -1,6 +1,7 @@
 package com.alexandrebarbosa.lojadevideogames;
 
 import entidades.Jogo;
+import entidades.ListaJogo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,7 +19,7 @@ import java.util.ResourceBundle;
 public class Janela_2_Controller implements Initializable {
 
     public static List<Jogo> jogos = new ArrayList<>();
-    public static List<Jogo> jogosOriginal = new ArrayList<>();
+    public ListaJogo listaJogos = new ListaJogo();
     @FXML
     private TextField texto1;
     @FXML
@@ -62,11 +63,11 @@ public class Janela_2_Controller implements Initializable {
             double valorSaida = Double.parseDouble(texto7.getText());
             int quantidade = Integer.parseInt(texto8.getText());
             Jogo jogo = new Jogo(codigo, descricao, marca, valorEntrada, valorSaida, quantidade, nome, genero);
-            if (BuscaBinaria.buscaBinariaCodigo(codigo)) {
+            if (ListaJogo.testarSeExisteCodigo(codigo)) {
                 Alertas.showAlert("Erro", "Codigo ja inserido", "Digite um código válido", Alert.AlertType.WARNING);
                 limpar();
             } else {
-                jogos.add(jogo);
+                listaJogos.adicionarInicio(jogo);
                 label1.setText("JOGO ADICIONADO!");
                 limpar();
             }

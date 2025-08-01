@@ -9,11 +9,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogos;
-import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogosOriginal;
 
 public class Janela_3_Controller {
+
+    public static List<Jogo> jogosOriginal = new ArrayList<>();
 
 
     @FXML
@@ -79,19 +82,7 @@ public class Janela_3_Controller {
         mostrarTextoOculto(colunaQuantidadeEstoque);
 
         if (jogosOriginal.isEmpty()) {
-            for (int i = 0; i < jogos.size(); i++) {
-                Jogo j = jogos.get(i);
-                jogosOriginal.add(new Jogo(
-                        j.getCodigo(),
-                        j.getDescricao(),
-                        j.getMarca(),
-                        j.getValorEntrada(),
-                        j.getValorSaida(),
-                        j.getQuantidadeEstoque(),
-                        j.getNome(),
-                        j.getGenero()
-                ));
-            }
+            jogosOriginal = jogos;
         }
         rbtPrecoOriginal.setDisable(true);
         rbtPrecoAtual.setDisable(true);
@@ -114,7 +105,6 @@ public class Janela_3_Controller {
         MergeSortLista.mergeSortPorCodigo(jogos);
         initialize();
     }
-
     @FXML
     public void ordenarPorNome(ActionEvent actionEvent) {
         MergeSortLista.mergeSortPorNome(jogos);

@@ -15,9 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogos;
-
 public class Janela_5_Controller implements Initializable {
+    Jogo jogoAtual = null;
     int indice = BuscaBinaria.mostrarIndice();
     @FXML
     private TextField texto2;
@@ -56,13 +55,13 @@ public class Janela_5_Controller implements Initializable {
             double valorEntrada = Double.parseDouble(texto6.getText());
             double valorSaida = Double.parseDouble(texto7.getText());
             int quantidade = Integer.parseInt(texto8.getText());
-            jogos.get(indice).setNome(nome);
-            jogos.get(indice).setGenero(genero);
-            jogos.get(indice).setMarca(marca);
-            jogos.get(indice).setDescricao(descricao);
-            jogos.get(indice).setQuantidadeEstoque(quantidade);
-            jogos.get(indice).setValorEntrada(valorEntrada);
-            jogos.get(indice).setValorSaida(valorSaida);
+            jogoAtual.setNome(nome);
+            jogoAtual.setGenero(genero);
+            jogoAtual.setMarca(marca);
+            jogoAtual.setDescricao(descricao);
+            jogoAtual.setQuantidadeEstoque(quantidade);
+            jogoAtual.setValorEntrada(valorEntrada);
+            jogoAtual.setValorSaida(valorSaida);
             label1.setText("JOGO editado com sucesso!");
         } catch (
                 NumberFormatException e) {
@@ -87,14 +86,16 @@ public class Janela_5_Controller implements Initializable {
         texto7.clear();
         texto8.clear();
     }
+
     public void mostrarJogo() {
-        texto2.setText(jogos.get(indice).getNome());
-        texto3.setText(jogos.get(indice).getGenero());
-        texto4.setText(jogos.get(indice).getMarca());
-        texto5.setText(jogos.get(indice).getDescricao());
-        texto6.setText(String.valueOf(jogos.get(indice).getValorEntrada()));
-        texto7.setText(String.valueOf(jogos.get(indice).getValorSaida()));
-        texto8.setText(String.valueOf(jogos.get(indice).getQuantidadeEstoque()));
+        jogoAtual = Janela_4_Controller.mostrarJogoAtual();
+        texto2.setText(jogoAtual.getNome());
+        texto3.setText(jogoAtual.getGenero());
+        texto4.setText(jogoAtual.getMarca());
+        texto5.setText(jogoAtual.getDescricao());
+        texto6.setText(String.valueOf(jogoAtual.getValorEntrada()));
+        texto7.setText(String.valueOf(jogoAtual.getValorSaida()));
+        texto8.setText(String.valueOf(jogoAtual.getQuantidadeEstoque()));
 
     }
 }

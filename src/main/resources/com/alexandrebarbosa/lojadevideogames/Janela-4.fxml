@@ -26,8 +26,8 @@
       <Button layoutX="251.0" layoutY="412.0" mnemonicParsing="false" onAction="#btVenderJogo" text="vender jogo" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <TextField fx:id="texto1" layoutX="161.0" layoutY="81.0" promptText="buscar jogo" />
-      <Button layoutX="251.0" layoutY="126.0" mnemonicParsing="false" onAction="#buscarPorCodigo" text="buscar jogo por código" />
-      <Button layoutX="80.0" layoutY="126.0" mnemonicParsing="false" onAction="#buscarPorNome" text="buscar jogo por nome" />
+      <Button fx:id="btnBuscarCodigo" layoutX="251.0" layoutY="126.0" mnemonicParsing="false" onAction="#buscarPorCodigo" text="buscar jogo por código" />
+      <Button fx:id="btnBuscarNome" layoutX="80.0" layoutY="126.0" mnemonicParsing="false" onAction="#buscarPorNome" text="buscar jogo por nome" />
       <TextField fx:id="texto2" layoutX="179.0" layoutY="449.0" prefHeight="25.0" prefWidth="224.0" promptText="digite a quantidade que deseja vender" />
     </children>
 </AnchorPane>

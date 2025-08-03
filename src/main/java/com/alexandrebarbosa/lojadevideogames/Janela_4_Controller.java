@@ -54,6 +54,10 @@ public class Janela_4_Controller {
     private TextField texto2;
 
     @FXML
+    private TextField texto3;
+
+
+    @FXML
     public void initialize() {
         colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -135,6 +139,27 @@ public class Janela_4_Controller {
 
     public static Jogo mostrarJogoAtual() {
         return jogoBuscado;
+    }
+
+    @FXML
+    protected void btReporJogo(ActionEvent event) throws IOException {
+
+        try {
+            int quantEscolhida = Integer.parseInt(texto3.getText());
+            if (jogoBuscado == null) {
+                Alertas.showAlert("Erro", "Nenhum Jogo Selecionado", "Por favor, busque e selecione um jogo primeiro.", Alert.AlertType.WARNING);
+                return;
+            }
+            if (quantEscolhida <= 0) {
+                Alertas.showAlert("Erro", "Quantidade Inválida", "A quantidade a ser vendida deve ser maior que zero.", Alert.AlertType.WARNING);
+                return;
+            }
+            jogoBuscado.setQuantidadeEstoque(quantEscolhida + jogoBuscado.getQuantidadeEstoque());
+            tabelaItens.refresh();
+        } catch (NumberFormatException e) {
+            Alertas.showAlert("Erro", "Campo de Quantidade Inválido", "Por favor, digite uma quantidade numérica válida.", Alert.AlertType.WARNING);
+
+        }
     }
 }
 

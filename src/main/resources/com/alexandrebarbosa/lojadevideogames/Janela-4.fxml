@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_4_Controller">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_4_Controller">
     <children>
         <TableView fx:id="tabelaItens" layoutX="15.0" layoutY="202.0" prefHeight="56.0" prefWidth="471.0">
             <columns>
@@ -22,12 +22,14 @@
             </columns>
         </TableView>
       <Button fx:id="voltarj3" layoutX="14.0" layoutY="14.0" onAction="#Voltar" text="Voltar" />
-      <Button layoutX="11.0" layoutY="412.0" mnemonicParsing="false" onAction="#btEditarJogo" prefHeight="25.0" prefWidth="172.0" text="Editar caracteristicas do jogo" />
-      <Button layoutX="251.0" layoutY="412.0" mnemonicParsing="false" onAction="#btVenderJogo" text="vender jogo" />
+      <Button layoutX="165.0" layoutY="288.0" mnemonicParsing="false" onAction="#btEditarJogo" prefHeight="25.0" prefWidth="172.0" text="Editar caracteristicas do jogo" />
+      <Button layoutX="87.0" layoutY="413.0" mnemonicParsing="false" onAction="#btVenderJogo" text="vender jogo" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <TextField fx:id="texto1" layoutX="161.0" layoutY="81.0" promptText="buscar jogo" />
       <Button fx:id="btnBuscarCodigo" layoutX="251.0" layoutY="126.0" mnemonicParsing="false" onAction="#buscarPorCodigo" text="buscar jogo por código" />
       <Button fx:id="btnBuscarNome" layoutX="80.0" layoutY="126.0" mnemonicParsing="false" onAction="#buscarPorNome" text="buscar jogo por nome" />
-      <TextField fx:id="texto2" layoutX="179.0" layoutY="449.0" prefHeight="25.0" prefWidth="224.0" promptText="digite a quantidade que deseja vender" />
+      <TextField fx:id="texto2" layoutX="15.0" layoutY="449.0" prefHeight="25.0" prefWidth="224.0" promptText="digite a quantidade que deseja vender" />
+      <Button layoutX="343.0" layoutY="413.0" mnemonicParsing="false" onAction="#btReporJogo" text="repor jogo" />
+      <TextField fx:id="texto3" layoutX="272.0" layoutY="449.0" prefHeight="25.0" prefWidth="214.0" promptText="digite a quantidade que deseja repor" />
     </children>
 </AnchorPane>

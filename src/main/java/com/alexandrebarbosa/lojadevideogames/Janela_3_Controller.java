@@ -70,7 +70,7 @@ public class Janela_3_Controller {
         dadosNaTabela = FXCollections.observableArrayList();
         tabelaItens.setItems(dadosNaTabela);
 
-        popularTabelaComListaEncadeada();
+        listaEncadeada();
 
         mostrarTextoOculto(colunaCodigo);
         mostrarTextoOculto(colunaNome);
@@ -97,7 +97,7 @@ public class Janela_3_Controller {
         rbtPrecoOriginal.setSelected(false);
     }
 
-    private void popularTabelaComListaEncadeada() {
+    private void listaEncadeada() {
         dadosNaTabela.clear();
 
         Jogo atual = ListaJogo.inicio;

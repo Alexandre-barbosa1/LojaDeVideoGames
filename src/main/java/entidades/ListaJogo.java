@@ -110,5 +110,13 @@ public class ListaJogo {
         }
     }
 
-
+    public int tamanho() {
+        int count = 0;
+        Jogo aux = inicio;
+        while (aux != null) {
+            count++;
+            aux = aux.proximo;
+        }
+        return count;
+    }
 }

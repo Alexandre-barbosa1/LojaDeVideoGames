@@ -1,6 +1,7 @@
 package com.alexandrebarbosa.lojadevideogames;
 
 import entidades.Jogo;
+import entidades.ListaJogo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,15 +10,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogos;
 
 public class Janela_3_Controller {
 
-    public static List<Jogo> jogosOriginal = new ArrayList<>();
-
+    private ObservableList<Jogo> dadosNaTabela;
 
     @FXML
     protected void Voltar(ActionEvent event) throws IOException {
@@ -70,8 +66,12 @@ public class Janela_3_Controller {
         colunaValorEntrada.setCellValueFactory(new PropertyValueFactory<>("valorEntrada"));
         colunaValorSaida.setCellValueFactory(new PropertyValueFactory<>("valorSaida"));
         colunaQuantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEstoque"));
-        ObservableList<Jogo> dados = FXCollections.observableArrayList(jogos);
-        tabelaItens.setItems(dados);
+
+        dadosNaTabela = FXCollections.observableArrayList();
+        tabelaItens.setItems(dadosNaTabela);
+
+        popularTabelaComListaEncadeada();
+
         mostrarTextoOculto(colunaCodigo);
         mostrarTextoOculto(colunaNome);
         mostrarTextoOculto(colunaGenero);
@@ -81,9 +81,6 @@ public class Janela_3_Controller {
         mostrarTextoOculto(colunaValorSaida);
         mostrarTextoOculto(colunaQuantidadeEstoque);
 
-        if (jogosOriginal.isEmpty()) {
-            jogosOriginal = jogos;
-        }
         rbtPrecoOriginal.setDisable(true);
         rbtPrecoAtual.setDisable(true);
         rbtPrecoOriginal.setStyle("-fx-text-fill: gray;");
@@ -100,48 +97,57 @@ public class Janela_3_Controller {
         rbtPrecoOriginal.setSelected(false);
     }
 
+    private void popularTabelaComListaEncadeada() {
+        dadosNaTabela.clear();
+
+        Jogo atual = ListaJogo.inicio;
+
+        while (atual != null) {
+            dadosNaTabela.add(atual);
+            atual = atual.proximo;
+        }
+    }
+
     @FXML
     public void ordenarPorCodigo(ActionEvent actionEvent) {
-        MergeSortLista.mergeSortPorCodigo(jogos);
         initialize();
     }
     @FXML
     public void ordenarPorNome(ActionEvent actionEvent) {
-        MergeSortLista.mergeSortPorNome(jogos);
         initialize();
     }
 
-    @FXML
-    public void btAplicarAjuste(ActionEvent actionEvent) {
-        double valorAjuste = Double.parseDouble(textValor.getText());
-        for (int i = 0; i < jogos.size(); i++) {
-            double escolha = jogos.get(i).getValorSaida();
-            double novoValor = escolha;
-            if (rbtPrecoOriginal.isSelected()) {
-                escolha = jogosOriginal.get(i).getValorSaida();
-                novoValor = escolha;
-            }
-            if (rbtDesconto.isSelected() && rbtPercentual.isSelected()) {
-                novoValor = escolha - ((valorAjuste / 100) * escolha);
-            } else if (rbtDesconto.isSelected() && rbtFixo.isSelected()) {
-                novoValor = escolha - valorAjuste;
-            } else if (rbtAumento.isSelected() && rbtPercentual.isSelected()) {
-                novoValor = escolha + ((valorAjuste / 100) * escolha);
-            } else if (rbtAumento.isSelected() && rbtFixo.isSelected()) {
-                novoValor = escolha + valorAjuste;
-            }
-            jogos.get(i).setValorSaida(novoValor);
-        }
-        tabelaItens.refresh();
-    }
+   @FXML
+  public void btAplicarAjuste(ActionEvent actionEvent) {
+     //   double valorAjuste = Double.parseDouble(textValor.getText());
+       // for (int i = 0; i < jogos.size(); i++) {
+        //    double escolha = jogos.get(i).getValorSaida();
+        //    double novoValor = escolha;
+         //   if (rbtPrecoOriginal.isSelected()) {
+         //       escolha = jogosOriginal.get(i).getValorSaida();
+          //      novoValor = escolha;
+          //  }
+          //  if (rbtDesconto.isSelected() && rbtPercentual.isSelected()) {
+          //      novoValor = escolha - ((valorAjuste / 100) * escolha);
+          //  } else if (rbtDesconto.isSelected() && rbtFixo.isSelected()) {
+          //      novoValor = escolha - valorAjuste;
+          //  } else if (rbtAumento.isSelected() && rbtPercentual.isSelected()) {
+          //      novoValor = escolha + ((valorAjuste / 100) * escolha);
+          //  } else if (rbtAumento.isSelected() && rbtFixo.isSelected()) {
+          //      novoValor = escolha + valorAjuste;
+          //  }
+         //   jogos.get(i).setValorSaida(novoValor);
+      //  }
+      //  tabelaItens.refresh();
+   }
 
-    @FXML
-    public void btLimparAjustes(ActionEvent actionEvent) {
-        for (int i = 0; i < jogos.size(); i++) {
-            jogos.get(i).setValorSaida(jogosOriginal.get(i).getValorSaida());
-        }
-        tabelaItens.refresh();
-    }
+  @FXML
+  public void btLimparAjustes(ActionEvent actionEvent) {
+   //     for (int i = 0; i < jogos.size(); i++) {
+    //        jogos.get(i).setValorSaida(jogosOriginal.get(i).getValorSaida());
+     //   }
+    //    tabelaItens.refresh();
+  }
 
     private <S, T> void mostrarTextoOculto(TableColumn<S, T> coluna) {
         coluna.setCellFactory(tc -> {

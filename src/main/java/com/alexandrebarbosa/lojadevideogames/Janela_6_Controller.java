@@ -12,7 +12,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 
-import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.jogos;
 
 public class Janela_6_Controller {
 
@@ -28,13 +27,8 @@ public class Janela_6_Controller {
     public void initialize() {
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaQuantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEstoque"));
-        ObservableList<Jogo> dados = FXCollections.observableArrayList(jogos);
-        tabelaItens.setItems(dados);
-        int total = 0;
-        for (int i=0; i<jogos.size(); i++) {
-            total += jogos.get(i).getQuantidadeEstoque();
-        }
-        totalEstoque.setText("Total de estoque: " + total);
+
+        totalEstoque.setText("Total de estoque: ");
     }
     @FXML
     protected void Voltar(ActionEvent event) throws IOException {

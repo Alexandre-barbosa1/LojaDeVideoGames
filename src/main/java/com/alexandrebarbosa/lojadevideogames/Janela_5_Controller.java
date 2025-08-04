@@ -17,7 +17,6 @@ import java.util.ResourceBundle;
 
 public class Janela_5_Controller implements Initializable {
     Jogo jogoAtual = null;
-    int indice = BuscaBinaria.mostrarIndice();
     @FXML
     private TextField texto2;
     @FXML
@@ -47,7 +46,6 @@ public class Janela_5_Controller implements Initializable {
     @FXML
     public void editarInfo() {
         try {
-            indice = BuscaBinaria.mostrarIndice();
             String nome = texto2.getText();
             String genero = texto3.getText();
             String marca = texto4.getText();

@@ -4,7 +4,7 @@ import com.alexandrebarbosa.lojadevideogames.Alertas;
 import javafx.scene.control.Alert;
 
 public class ListaJogo {
-    static Jogo inicio = null;
+    public static Jogo inicio = null;
     static Jogo fim = null;
 
     public void adicionarInicio(Jogo novo) {
@@ -78,6 +78,36 @@ public class ListaJogo {
             aux = aux.proximo;
         }
         return false;
+    }
+
+    public Jogo get(int indice) {
+        Jogo aux = inicio;
+        int contador = 0;
+        while (aux != null) {
+            if (contador == indice) return aux;
+            contador++;
+            aux = aux.proximo;
+        }
+        return null;
+    }
+    public void set(int indice, Jogo novo) {
+        Jogo aux = inicio;
+        int contador = 0;
+        while (aux != null) {
+            if (contador == indice) {
+                aux.setCodigo(novo.getCodigo());
+                aux.setDescricao(novo.getDescricao());
+                aux.setMarca(novo.getMarca());
+                aux.setValorEntrada(novo.getValorEntrada());
+                aux.setValorSaida(novo.getValorSaida());
+                aux.setQuantidadeEstoque(novo.getQuantidadeEstoque());
+                aux.setNome(novo.getNome());
+                aux.setGenero(novo.getGenero());
+                return;
+            }
+            contador++;
+            aux = aux.proximo;
+        }
     }
 
 

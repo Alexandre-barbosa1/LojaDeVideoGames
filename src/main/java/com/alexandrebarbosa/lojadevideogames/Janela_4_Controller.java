@@ -2,6 +2,8 @@ package com.alexandrebarbosa.lojadevideogames;
 
 import entidades.Jogo;
 import entidades.ListaJogo;
+import entidades.ListaVendas;
+import entidades.RelatorioVendas;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,9 +17,7 @@ import java.util.List;
 
 public class Janela_4_Controller {
     static Jogo jogoBuscado = null;
-    public double vendas = 0;
-    List<Jogo> listaParaTabela = new ArrayList<>();
-    int indice = 0;
+    public ListaVendas listaVendas = new ListaVendas();
 
     @FXML
     protected void Voltar(ActionEvent event) throws IOException {
@@ -126,6 +126,33 @@ public class Janela_4_Controller {
             int novoEstoque = jogoBuscado.getQuantidadeEstoque() - quantEscolhida;
             jogoBuscado.setQuantidadeEstoque(novoEstoque);
             tabelaItens.refresh();
+            double valorsaida = jogoBuscado.getValorSaida();
+            double montante = quantEscolhida * valorsaida;
+            String nome = jogoBuscado.getNome();
+            String codiguim =  jogoBuscado.getCodigo();
+            RelatorioVendas relatorio = new RelatorioVendas(nome , quantEscolhida , montante, codiguim);
+            if (listaVendas.tamanho() == 0) {
+                listaVendas.adicionarInicio(relatorio);
+            } else {
+                boolean itemEncontrado = false;
+                for (int i = 0; i < listaVendas.tamanho(); i++) {
+                    RelatorioVendas itemDaLista = listaVendas.get(i);
+                    if (codiguim.equals(itemDaLista.getCodigoVendas())) {
+                        int novaQuantidade = itemDaLista.getQuantidadeVendas() + quantEscolhida;
+                        double novoMontante = itemDaLista.getMontante() + montante;
+
+                        RelatorioVendas relatorioAtualizado = new RelatorioVendas(nome, novaQuantidade, novoMontante, codiguim);
+                        listaVendas.set(i, relatorioAtualizado);
+
+                        itemEncontrado = true;
+                        break;
+                    }
+                }
+                if (!itemEncontrado) {
+                    listaVendas.adicionarInicio(relatorio);
+                }
+            }
+
 
         } catch (NumberFormatException e) {
             Alertas.showAlert("Erro", "Campo de Quantidade Inválido", "Por favor, digite uma quantidade numérica válida.", Alert.AlertType.WARNING);

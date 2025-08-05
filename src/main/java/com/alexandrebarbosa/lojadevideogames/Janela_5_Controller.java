@@ -35,9 +35,6 @@ public class Janela_5_Controller implements Initializable {
     private Label label1;
 
     @FXML
-    private Button botao1;
-
-    @FXML
     protected void Voltar(ActionEvent event) throws IOException {
         Navegacao.remover();
         Navegacao.caminho(event);

@@ -9,10 +9,11 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_6_Controller">
    <children>
-       <TableView fx:id="tabelaItens" layoutX="14.0" layoutY="57.0" prefHeight="383.0" prefWidth="319.0">
+       <TableView fx:id="tabelaItens" layoutX="14.0" layoutY="57.0" prefHeight="383.0" prefWidth="470.0">
            <columns>
-               <TableColumn fx:id="colunaNome" prefWidth="171.0" text="Nome" />
-               <TableColumn fx:id="colunaQuantidadeEstoque" prefWidth="147.0" text="Quantidade no Estoque" />
+               <TableColumn fx:id="colunaCodigo" prefWidth="87.0" text="Código" />
+               <TableColumn fx:id="colunaNome" prefWidth="243.0" text="Nome" />
+            <TableColumn fx:id="colunaQuantidadeEstoque" prefWidth="139.0" text="Quantidade no Estoque" />
            </columns>
        </TableView>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Voltar" text="Voltar" />

@@ -6,19 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Janela_2_Controller implements Initializable {
 
-    public static List<Jogo> jogos = new ArrayList<>();
     public ListaJogo listaJogos = new ListaJogo();
     @FXML
     private TextField texto1;
@@ -40,14 +36,10 @@ public class Janela_2_Controller implements Initializable {
     private Label label1;
 
     @FXML
-    private Button botao1;
-
-    @FXML
     protected void Voltar(ActionEvent event) throws IOException {
         Navegacao.remover();
         Navegacao.caminho(event);
     }
-
     @FXML
     public void adicionarInfo() {
         try {
@@ -69,6 +61,16 @@ public class Janela_2_Controller implements Initializable {
             } else {
                 listaJogos.adicionarInicio(jogo);
                 label1.setText("JOGO ADICIONADO!");
+                Historico.add(new Jogo(
+                        jogo.getCodigo(),
+                        jogo.getDescricao(),
+                        jogo.getMarca(),
+                        jogo.getValorEntrada(),
+                        jogo.getValorSaida(),
+                        jogo.getQuantidadeEstoque(),
+                        jogo.getNome(),
+                        jogo.getGenero()
+                ));
                 limpar();
             }
         } catch (NumberFormatException e) {

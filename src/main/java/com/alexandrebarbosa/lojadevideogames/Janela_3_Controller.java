@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class Janela_3_Controller {
 
-    private ObservableList<Jogo> dadosNaTabela;
+   static ObservableList<Jogo> dadosNaTabela;
 
     @FXML
     protected void Voltar(ActionEvent event) throws IOException {
@@ -97,11 +97,9 @@ public class Janela_3_Controller {
         rbtPrecoOriginal.setSelected(false);
     }
 
-    private void listaEncadeada() {
+    public static void listaEncadeada() {
         dadosNaTabela.clear();
-
         Jogo atual = ListaJogo.inicio;
-
         while (atual != null) {
             dadosNaTabela.add(atual);
             atual = atual.proximo;

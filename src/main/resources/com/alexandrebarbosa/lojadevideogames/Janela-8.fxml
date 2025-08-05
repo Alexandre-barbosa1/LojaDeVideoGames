@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_8_Controller">
+    <TableView fx:id="historico" layoutX="15.0" layoutY="58.0" prefHeight="425.0" prefWidth="470.0">
+        <columns>
+            <TableColumn fx:id="colunaCodigo" prefWidth="53.0" text="Código" />
+            <TableColumn fx:id="colunaNome" prefWidth="55.0" text="Nome" />
+            <TableColumn fx:id="colunaGenero" prefWidth="62.0" text="Genero" />
+            <TableColumn fx:id="colunaMarca" prefWidth="57.0" text="Marca" />
+            <TableColumn fx:id="colunaDescricao" prefWidth="73.0" text="Descrição" />
+            <TableColumn fx:id="colunaValorEntrada" prefWidth="110.0" sortable="false" text="Valor de entrada" />
+            <TableColumn fx:id="colunaValorSaida" prefWidth="92.0" text="Valor de saída" />
+            <TableColumn fx:id="colunaQuantidadeEstoque" prefWidth="140.0" text="Quantidade no Estoque" />
+        </columns>
+    </TableView>
+    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Voltar" text="Voltar" />
+   <Button layoutX="212.0" layoutY="14.0" mnemonicParsing="false" text="Ordenar por mais recente" />
+   <Button layoutX="382.0" layoutY="14.0" mnemonicParsing="false" onAction="#btLimparHistorico" text="Limpar Histórico" />
+</AnchorPane>

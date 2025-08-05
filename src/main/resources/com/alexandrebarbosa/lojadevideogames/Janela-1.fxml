@@ -17,6 +17,7 @@
                 <Button layoutX="150.0" layoutY="110.0" mnemonicParsing="false" onAction="#btBuscarJogo" prefHeight="30.0" prefWidth="160.0" text="Buscar jogos" />
                 <Button layoutX="150.0" layoutY="160.0" mnemonicParsing="false" onAction="#btRelatorioEstoque" prefHeight="30.0" prefWidth="160.0" text="Relatório de estoque jogos" />
                 <Button layoutX="150.0" layoutY="210.0" mnemonicParsing="false" onAction="#btRelatorioVendas" prefHeight="30.0" prefWidth="160.0" text="Relatorio de vendas jogos" />
+            <Button layoutX="150.0" layoutY="260.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="160.0" onAction="#btRegistro" text="Registro de jogos inseridos" />
             </children>
         </Pane>
     </children>

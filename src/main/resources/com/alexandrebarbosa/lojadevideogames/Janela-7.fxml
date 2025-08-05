@@ -9,14 +9,21 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_7_Controller">
    <children>
-       <TableView fx:id="tabelaItens" layoutX="14.0" layoutY="57.0" prefHeight="383.0" prefWidth="319.0">
+       <TableView fx:id="tabelaVendas" layoutX="15.0" layoutY="58.0" prefHeight="383.0" prefWidth="470.0">
            <columns>
-               <TableColumn fx:id="colunaNome" prefWidth="171.0" text="Nome" />
-               <TableColumn fx:id="colunaQuantidadeEstoque" onEditStart="#initialize" prefWidth="147.0" text="Quantidade no Estoque" />
+               <TableColumn fx:id="colunaCodigoVendas" prefWidth="75.0" text="Código" />
+               <TableColumn fx:id="colunaNomeVendas" prefWidth="160.0" text="Nome" />
+            <TableColumn fx:id="colunaQuantidadeVendas" prefWidth="138.0" text="Quantidade de Vendas" />
+            <TableColumn fx:id="colunaMontante" prefWidth="96.0" text="Montante" />
            </columns>
        </TableView>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Voltar" text="Voltar" />
-      <Label fx:id="totalEstoque" layoutX="14.0" layoutY="439.0" prefHeight="25.0" prefWidth="180.0" text="Total de Estoque: 0">
+      <Label fx:id="totalVendas" layoutX="15.0" layoutY="439.0" prefHeight="25.0" prefWidth="180.0" text="Total de Vendas: 0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalMontante" layoutX="217.0" layoutY="439.0" prefHeight="25.0" prefWidth="180.0" text="Montante Total: 0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

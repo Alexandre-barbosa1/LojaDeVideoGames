@@ -33,5 +33,10 @@ public class Janela_1_Controller {
         Navegacao.add("Janela-7.fxml");
         Navegacao.caminho(event);
     }
+    @FXML
+    protected void btRegistro(ActionEvent event) throws IOException {
+        Navegacao.add("Janela-8.fxml");
+        Navegacao.caminho(event);
+    }
 
 }

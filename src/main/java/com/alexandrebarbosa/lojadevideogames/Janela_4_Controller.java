@@ -18,6 +18,7 @@ import java.util.List;
 public class Janela_4_Controller {
     static Jogo jogoBuscado = null;
     public ListaVendas listaVendas = new ListaVendas();
+    public ListaJogo listaJogo = new ListaJogo();
 
     @FXML
     protected void Voltar(ActionEvent event) throws IOException {
@@ -129,8 +130,8 @@ public class Janela_4_Controller {
             double valorsaida = jogoBuscado.getValorSaida();
             double montante = quantEscolhida * valorsaida;
             String nome = jogoBuscado.getNome();
-            String codiguim =  jogoBuscado.getCodigo();
-            RelatorioVendas relatorio = new RelatorioVendas(nome , quantEscolhida , montante, codiguim);
+            String codiguim = jogoBuscado.getCodigo();
+            RelatorioVendas relatorio = new RelatorioVendas(nome, quantEscolhida, montante, codiguim);
             if (listaVendas.tamanho() == 0) {
                 listaVendas.adicionarInicio(relatorio);
             } else {
@@ -187,6 +188,18 @@ public class Janela_4_Controller {
             Alertas.showAlert("Erro", "Campo de Quantidade Inválido", "Por favor, digite uma quantidade numérica válida.", Alert.AlertType.WARNING);
 
         }
+    }
+
+    @FXML
+    protected void btExcluirJogo() {
+        if (jogoBuscado == null) {
+            Alertas.showAlert("Erro", "Nenhum Jogo Selecionado", "Por favor, busque e selecione um jogo para excluir.", Alert.AlertType.WARNING);
+            return;
+        }
+        String codigoParaExcluir = jogoBuscado.getCodigo();
+        listaJogo.excluir(codigoParaExcluir);
+        limpar();
+        jogoBuscado = null;
     }
 }
 

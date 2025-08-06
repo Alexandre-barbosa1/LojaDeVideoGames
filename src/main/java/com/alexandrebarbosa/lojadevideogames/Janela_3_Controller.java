@@ -13,7 +13,8 @@ import java.io.IOException;
 
 public class Janela_3_Controller {
 
-   static ObservableList<Jogo> dadosNaTabela;
+    static ObservableList<Jogo> dadosNaTabela;
+    public ListaJogo listaJogo;
 
     @FXML
     protected void Voltar(ActionEvent event) throws IOException {
@@ -109,43 +110,47 @@ public class Janela_3_Controller {
     @FXML
     public void ordenarPorCodigo(ActionEvent actionEvent) {
         initialize();
+        listaJogo.ordenarPorCodigo();
+        tabelaItens.refresh();
     }
+
     @FXML
     public void ordenarPorNome(ActionEvent actionEvent) {
-        initialize();
+        listaJogo.ordenarPorNome();
+        tabelaItens.refresh();
     }
 
-   @FXML
-  public void btAplicarAjuste(ActionEvent actionEvent) {
-     //   double valorAjuste = Double.parseDouble(textValor.getText());
-       // for (int i = 0; i < jogos.size(); i++) {
+    @FXML
+    public void btAplicarAjuste(ActionEvent actionEvent) {
+        //   double valorAjuste = Double.parseDouble(textValor.getText());
+        // for (int i = 0; i < jogos.size(); i++) {
         //    double escolha = jogos.get(i).getValorSaida();
         //    double novoValor = escolha;
-         //   if (rbtPrecoOriginal.isSelected()) {
-         //       escolha = jogosOriginal.get(i).getValorSaida();
-          //      novoValor = escolha;
-          //  }
-          //  if (rbtDesconto.isSelected() && rbtPercentual.isSelected()) {
-          //      novoValor = escolha - ((valorAjuste / 100) * escolha);
-          //  } else if (rbtDesconto.isSelected() && rbtFixo.isSelected()) {
-          //      novoValor = escolha - valorAjuste;
-          //  } else if (rbtAumento.isSelected() && rbtPercentual.isSelected()) {
-          //      novoValor = escolha + ((valorAjuste / 100) * escolha);
-          //  } else if (rbtAumento.isSelected() && rbtFixo.isSelected()) {
-          //      novoValor = escolha + valorAjuste;
-          //  }
-         //   jogos.get(i).setValorSaida(novoValor);
-      //  }
-      //  tabelaItens.refresh();
-   }
+        //   if (rbtPrecoOriginal.isSelected()) {
+        //       escolha = jogosOriginal.get(i).getValorSaida();
+        //      novoValor = escolha;
+        //  }
+        //  if (rbtDesconto.isSelected() && rbtPercentual.isSelected()) {
+        //      novoValor = escolha - ((valorAjuste / 100) * escolha);
+        //  } else if (rbtDesconto.isSelected() && rbtFixo.isSelected()) {
+        //      novoValor = escolha - valorAjuste;
+        //  } else if (rbtAumento.isSelected() && rbtPercentual.isSelected()) {
+        //      novoValor = escolha + ((valorAjuste / 100) * escolha);
+        //  } else if (rbtAumento.isSelected() && rbtFixo.isSelected()) {
+        //      novoValor = escolha + valorAjuste;
+        //  }
+        //   jogos.get(i).setValorSaida(novoValor);
+        //  }
+        //  tabelaItens.refresh();
+    }
 
-  @FXML
-  public void btLimparAjustes(ActionEvent actionEvent) {
-   //     for (int i = 0; i < jogos.size(); i++) {
-    //        jogos.get(i).setValorSaida(jogosOriginal.get(i).getValorSaida());
-     //   }
-    //    tabelaItens.refresh();
-  }
+    @FXML
+    public void btLimparAjustes(ActionEvent actionEvent) {
+        //     for (int i = 0; i < jogos.size(); i++) {
+        //        jogos.get(i).setValorSaida(jogosOriginal.get(i).getValorSaida());
+        //   }
+        //    tabelaItens.refresh();
+    }
 
     private <S, T> void mostrarTextoOculto(TableColumn<S, T> coluna) {
         coluna.setCellFactory(tc -> {

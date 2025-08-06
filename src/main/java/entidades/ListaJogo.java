@@ -1,6 +1,7 @@
 package entidades;
 
 import com.alexandrebarbosa.lojadevideogames.Alertas;
+import com.alexandrebarbosa.lojadevideogames.MergeSortLista;
 import javafx.scene.control.Alert;
 
 public class ListaJogo {
@@ -38,6 +39,7 @@ public class ListaJogo {
             }
         }
     }
+
     public static Jogo buscarjogoPorCodigo(String codigo) {
         Jogo aux = inicio;
         if (inicio == null) {
@@ -90,6 +92,7 @@ public class ListaJogo {
         }
         return null;
     }
+
     public void set(int indice, Jogo novo) {
         Jogo aux = inicio;
         int contador = 0;
@@ -118,5 +121,61 @@ public class ListaJogo {
             aux = aux.proximo;
         }
         return count;
+    }
+
+    public void ordenarPorCodigo() {
+        if (tamanho() <= 1) {
+            return;
+        }
+        inicio = MergeSortLista.ordenarPorCodigo(inicio);
+        Jogo atual = inicio;
+        while (atual != null && atual.proximo != null) {
+            atual = atual.proximo;
+        }
+        fim = atual;
+    }
+
+    public void ordenarPorNome() {
+        if (tamanho() <= 1) {
+            return;
+        }
+        inicio = MergeSortLista.ordenarPorNome(inicio);
+        Jogo atual = inicio;
+        while (atual != null && atual.proximo != null) {
+            atual = atual.proximo;
+        }
+        fim = atual;
+    }
+
+    public void excluir(String codigoParaExcluir) {
+        if (inicio == null) {
+            Alertas.showAlert("Erro", "Lista Vazia", "A lista está vazia. Não há nada para excluir.", Alert.AlertType.WARNING);
+            return;
+        }
+        if (inicio.getCodigo().equalsIgnoreCase(codigoParaExcluir)) {
+            inicio = inicio.proximo;
+            if (inicio == null) {
+                fim = null;
+            }
+            Alertas.showAlert("Sucesso", "Remoção Concluída", "O jogo com o código '" + codigoParaExcluir + "' foi removido com sucesso.", Alert.AlertType.INFORMATION);
+            return;
+        }
+
+        Jogo anterior = inicio;
+        Jogo atual = inicio.proximo;
+
+        while (atual != null) {
+            if (atual.getCodigo().equalsIgnoreCase(codigoParaExcluir)) {
+                anterior.proximo = atual.proximo;
+                if (anterior.proximo == null) {
+                    fim = anterior;
+                }
+                Alertas.showAlert("Sucesso", "Remoção Concluída", "O jogo com o código '" + codigoParaExcluir + "' foi removido com sucesso.", Alert.AlertType.INFORMATION);
+                return;
+            }
+            anterior = atual;
+            atual = atual.proximo;
+        }
+        Alertas.showAlert("Erro", "Jogo Não Encontrado", "O jogo com o código '" + codigoParaExcluir + "' não foi encontrado na lista.", Alert.AlertType.ERROR);
     }
 }

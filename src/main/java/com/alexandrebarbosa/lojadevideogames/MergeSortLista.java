@@ -7,79 +7,104 @@ import java.util.List;
 
 public class MergeSortLista {
 
-    public static void mergeSortPorCodigo(List<Jogo> lista) {
-        List<Jogo> aux = new ArrayList<>();
-        for (int i = 0; i < lista.size(); i++) {
-            aux.add(null);
-        }
-        mergeSortPorCodigo(lista, aux, 0, lista.size() - 1);
+
+    public static Jogo ordenarPorCodigo(Jogo cabeca) {
+        return mergeSortPorCodigo(cabeca);
     }
 
-    private static void mergeSortPorCodigo(List<Jogo> lista, List<Jogo> aux, int inicio, int fim) {
-        if (inicio < fim) {
-            int meio = (inicio + fim) / 2;
-            mergeSortPorCodigo(lista, aux, inicio, meio);
-            mergeSortPorCodigo(lista, aux, meio + 1, fim);
-            intercalarPorCodigo(lista, aux, inicio, meio, fim);
+
+    public static Jogo ordenarPorNome(Jogo cabeca) {
+        return mergeSortPorNome(cabeca);
+    }
+    private static Jogo mergeSortPorCodigo(Jogo cabeca) {
+        if (cabeca == null || cabeca.proximo == null) {
+            return cabeca;
         }
+
+        Jogo meio = encontrarMeio(cabeca);
+        Jogo proximoDoMeio = meio.proximo;
+        meio.proximo = null;
+
+        Jogo metade1 = mergeSortPorCodigo(cabeca);
+        Jogo metade2 = mergeSortPorCodigo(proximoDoMeio);
+
+        return mergePorCodigo(metade1, metade2);
     }
 
-    private static void intercalarPorCodigo(List<Jogo> lista, List<Jogo> aux, int inicio, int meio, int fim) {
-        for (int i = inicio; i <= fim; i++) {
-            aux.set(i, lista.get(i));
-        }
+    private static Jogo mergePorCodigo(Jogo metade1, Jogo metade2) {
+        Jogo noTemporario = new Jogo();
+        Jogo atual = noTemporario;
 
-        int esq = inicio;
-        int dir = meio + 1;
-
-        for (int i = inicio; i <= fim; i++) {
-            if (esq > meio) {
-                lista.set(i, aux.get(dir++));
-            } else if (dir > fim) {
-                lista.set(i, aux.get(esq++));
-            } else if (aux.get(esq).getCodigo().compareToIgnoreCase(aux.get(dir).getCodigo()) < 0) {
-                lista.set(i, aux.get(esq++));
+        while (metade1 != null && metade2 != null) {
+            if (metade1.getCodigo().compareToIgnoreCase(metade2.getCodigo()) <= 0) {
+                atual.proximo = metade1;
+                metade1 = metade1.proximo;
             } else {
-                lista.set(i, aux.get(dir++));
+                atual.proximo = metade2;
+                metade2 = metade2.proximo;
             }
+            atual = atual.proximo;
         }
+
+        if (metade1 != null) {
+            atual.proximo = metade1;
+        }
+        if (metade2 != null) {
+            atual.proximo = metade2;
+        }
+        return noTemporario.proximo;
     }
 
-    public static void mergeSortPorNome(List<Jogo> lista) {
-        List<Jogo> aux = new ArrayList<>();
-        for (int i = 0; i < lista.size(); i++) {
-            aux.add(null);
+
+    private static Jogo mergeSortPorNome(Jogo cabeca) {
+        if (cabeca == null || cabeca.proximo == null) {
+            return cabeca;
         }
-        mergeSortPorNome(lista, aux, 0, lista.size() - 1);
+
+        Jogo meio = encontrarMeio(cabeca);
+        Jogo proximoDoMeio = meio.proximo;
+        meio.proximo = null;
+
+        Jogo metade1 = mergeSortPorNome(cabeca);
+        Jogo metade2 = mergeSortPorNome(proximoDoMeio);
+
+        return mergePorNome(metade1, metade2);
     }
 
-    private static void mergeSortPorNome(List<Jogo> lista, List<Jogo> aux, int inicio, int fim) {
-        if (inicio < fim) {
-            int meio = (inicio + fim) / 2;
-            mergeSortPorNome(lista, aux, inicio, meio);
-            mergeSortPorNome(lista, aux, meio + 1, fim);
-            intercalarPorNome(lista, aux, inicio, meio, fim);
-        }
-    }
+    private static Jogo mergePorNome(Jogo metade1, Jogo metade2) {
+        Jogo noTemporario = new Jogo();
+        Jogo atual = noTemporario;
 
-    private static void intercalarPorNome(List<Jogo> lista, List<Jogo> aux, int inicio, int meio, int fim) {
-        for (int i = inicio; i <= fim; i++) {
-            aux.set(i, lista.get(i));
-        }
-
-        int esq = inicio;
-        int dir = meio + 1;
-
-        for (int i = inicio; i <= fim; i++) {
-            if (esq > meio) {
-                lista.set(i, aux.get(dir++));
-            } else if (dir > fim) {
-                lista.set(i, aux.get(esq++));
-            } else if (aux.get(esq).getNome().compareToIgnoreCase(aux.get(dir).getNome()) < 0) {
-                lista.set(i, aux.get(esq++));
+        while (metade1 != null && metade2 != null) {
+            if (metade1.getNome().compareToIgnoreCase(metade2.getNome()) <= 0) {
+                atual.proximo = metade1;
+                metade1 = metade1.proximo;
             } else {
-                lista.set(i, aux.get(dir++));
+                atual.proximo = metade2;
+                metade2 = metade2.proximo;
             }
+            atual = atual.proximo;
         }
+
+        if (metade1 != null) {
+            atual.proximo = metade1;
+        }
+        if (metade2 != null) {
+            atual.proximo = metade2;
+        }
+        return noTemporario.proximo;
+    }
+
+    private static Jogo encontrarMeio(Jogo cabeca) {
+        if (cabeca == null) {
+            return null;
+        }
+        Jogo lento = cabeca;
+        Jogo rapido = cabeca.proximo;
+        while (rapido != null && rapido.proximo != null) {
+            lento = lento.proximo;
+            rapido = rapido.proximo.proximo;
+        }
+        return lento;
     }
 }

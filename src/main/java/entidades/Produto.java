@@ -11,6 +11,10 @@ public abstract class Produto {
     private int quantidadeEstoque;
     private String nome;
 
+    public Produto() {
+
+    }
+
     public Produto(String codigo, String descricao, String marca, double valorEntrada, double valorSaida, int quantidadeEstoque,
                    String nome) {
         this.codigo = codigo;

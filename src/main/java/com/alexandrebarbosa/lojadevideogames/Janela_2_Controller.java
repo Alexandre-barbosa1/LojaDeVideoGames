@@ -61,6 +61,9 @@ public class Janela_2_Controller implements Initializable {
             } else {
                 listaJogos.adicionarInicio(jogo);
                 label1.setText("JOGO ADICIONADO!");
+                if(Historico.test%2!=0) {
+                Historico.inverter();
+                }
                 Historico.add(new Jogo(
                         jogo.getCodigo(),
                         jogo.getDescricao(),

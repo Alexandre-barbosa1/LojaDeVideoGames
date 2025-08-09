@@ -1,7 +1,6 @@
 package entidades;
 
 import com.alexandrebarbosa.lojadevideogames.Alertas;
-import com.alexandrebarbosa.lojadevideogames.MergeSortLista;
 import javafx.scene.control.Alert;
 
 public class ListaJogo {
@@ -82,7 +81,7 @@ public class ListaJogo {
         return false;
     }
 
-    public Jogo get(int indice) {
+    public static Jogo get(int indice) {
         Jogo aux = inicio;
         int contador = 0;
         while (aux != null) {
@@ -93,7 +92,7 @@ public class ListaJogo {
         return null;
     }
 
-    public void set(int indice, Jogo novo) {
+    public static void set(int indice, Jogo novo) {
         Jogo aux = inicio;
         int contador = 0;
         while (aux != null) {
@@ -113,7 +112,7 @@ public class ListaJogo {
         }
     }
 
-    public int tamanho() {
+    public static int tamanho() {
         int count = 0;
         Jogo aux = inicio;
         while (aux != null) {
@@ -121,30 +120,6 @@ public class ListaJogo {
             aux = aux.proximo;
         }
         return count;
-    }
-
-    public void ordenarPorCodigo() {
-        if (tamanho() <= 1) {
-            return;
-        }
-        inicio = MergeSortLista.ordenarPorCodigo(inicio);
-        Jogo atual = inicio;
-        while (atual != null && atual.proximo != null) {
-            atual = atual.proximo;
-        }
-        fim = atual;
-    }
-
-    public void ordenarPorNome() {
-        if (tamanho() <= 1) {
-            return;
-        }
-        inicio = MergeSortLista.ordenarPorNome(inicio);
-        Jogo atual = inicio;
-        while (atual != null && atual.proximo != null) {
-            atual = atual.proximo;
-        }
-        fim = atual;
     }
 
     public void excluir(String codigoParaExcluir) {

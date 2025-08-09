@@ -109,14 +109,13 @@ public class Janela_3_Controller {
 
     @FXML
     public void ordenarPorCodigo(ActionEvent actionEvent) {
-        initialize();
-        listaJogo.ordenarPorCodigo();
+        Ordenar.ordenarCodigo();
         tabelaItens.refresh();
     }
 
     @FXML
     public void ordenarPorNome(ActionEvent actionEvent) {
-        listaJogo.ordenarPorNome();
+        Ordenar.ordenarNome();
         tabelaItens.refresh();
     }
 

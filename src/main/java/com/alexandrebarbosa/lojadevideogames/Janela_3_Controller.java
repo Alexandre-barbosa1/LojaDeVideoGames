@@ -59,6 +59,7 @@ public class Janela_3_Controller {
 
     @FXML
     public void initialize() {
+        listaJogo = new ListaJogo();
         colunaCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         colunaGenero.setCellValueFactory(new PropertyValueFactory<>("genero"));
@@ -109,13 +110,15 @@ public class Janela_3_Controller {
 
     @FXML
     public void ordenarPorCodigo(ActionEvent actionEvent) {
-        Ordenar.ordenarCodigo();
+        listaJogo.ordenarPorCodigo();
+        listaEncadeada();
         tabelaItens.refresh();
     }
 
     @FXML
     public void ordenarPorNome(ActionEvent actionEvent) {
-        Ordenar.ordenarNome();
+        listaJogo.ordenarPorNome();
+        listaEncadeada();
         tabelaItens.refresh();
     }
 

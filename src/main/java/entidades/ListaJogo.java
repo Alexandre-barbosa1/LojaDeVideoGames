@@ -1,6 +1,7 @@
 package entidades;
 
 import com.alexandrebarbosa.lojadevideogames.Alertas;
+import com.alexandrebarbosa.lojadevideogames.MergeSortLista;
 import javafx.scene.control.Alert;
 
 public class ListaJogo {
@@ -81,7 +82,7 @@ public class ListaJogo {
         return false;
     }
 
-    public static Jogo get(int indice) {
+    public Jogo get(int indice) {
         Jogo aux = inicio;
         int contador = 0;
         while (aux != null) {
@@ -92,7 +93,7 @@ public class ListaJogo {
         return null;
     }
 
-    public static void set(int indice, Jogo novo) {
+    public void set(int indice, Jogo novo) {
         Jogo aux = inicio;
         int contador = 0;
         while (aux != null) {
@@ -112,7 +113,7 @@ public class ListaJogo {
         }
     }
 
-    public static int tamanho() {
+    public int tamanho() {
         int count = 0;
         Jogo aux = inicio;
         while (aux != null) {
@@ -120,6 +121,33 @@ public class ListaJogo {
             aux = aux.proximo;
         }
         return count;
+    }
+
+    public void ordenarPorCodigo() {
+        if (tamanho() <= 1) {
+            return;
+        }
+        MergeSortLista mergeSortLista = new MergeSortLista();
+        inicio = mergeSortLista.mergeSort(inicio, false);
+        Jogo atual = inicio;
+        while (atual != null && atual.proximo != null) {
+            atual = atual.proximo;
+        }
+        fim = atual;
+    }
+
+    public void ordenarPorNome() {
+        if (tamanho() <= 1) {
+            return;
+        }
+        MergeSortLista mergeSortLista = new MergeSortLista();
+        inicio = mergeSortLista.mergeSort(inicio, true);
+
+        Jogo atual = inicio;
+        while (atual != null && atual.proximo != null) {
+            atual = atual.proximo;
+        }
+        fim = atual;
     }
 
     public void excluir(String codigoParaExcluir) {

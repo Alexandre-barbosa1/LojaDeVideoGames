@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_3_Controller">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" stylesheets="@../../../Estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_3_Controller">
     <children>
         <TableView fx:id="tabelaItens" layoutX="15.0" layoutY="58.0" prefHeight="334.0" prefWidth="470.0">
             <columns>

@@ -12,6 +12,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 
+import static com.alexandrebarbosa.lojadevideogames.Janela_3_Controller.mostrarTextoOculto;
+
 public class Janela_8_Controller {
     static ObservableList<Jogo> registros;
     @FXML
@@ -52,6 +54,14 @@ public class Janela_8_Controller {
         registros = FXCollections.observableArrayList();
         historico.setItems(registros);
         historico();
+        mostrarTextoOculto(colunaCodigo);
+        mostrarTextoOculto(colunaNome);
+        mostrarTextoOculto(colunaGenero);
+        mostrarTextoOculto(colunaMarca);
+        mostrarTextoOculto(colunaDescricao);
+        mostrarTextoOculto(colunaValorEntrada);
+        mostrarTextoOculto(colunaValorSaida);
+        mostrarTextoOculto(colunaQuantidadeEstoque);
     }
     String opcao = "Ordenar por mais antigo";
     String opcao2 = "Ordenar por mais recente";

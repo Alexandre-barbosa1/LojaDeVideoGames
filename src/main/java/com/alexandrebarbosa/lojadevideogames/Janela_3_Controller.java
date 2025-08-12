@@ -107,7 +107,7 @@ public class Janela_3_Controller {
             Jogo aux = ListaJogo.inicio;
             double valorAjuste = Double.parseDouble(textValor.getText());
             if(!rbtDesconto.isSelected() && !rbtAcrescimo.isSelected()) {
-                Alertas.showAlert("Erro", "Campos incompletos", "Digite o ajusto e marque a opção desejada", Alert.AlertType.WARNING);
+                Alertas.showAlert("Erro", "Campos incompletos", "Digite o ajuste e marque a opção desejada", Alert.AlertType.WARNING);
             }
             if (rbtDesconto.isSelected()) {
                 textaj = "Ajuste aplicado: -" + valorAjuste + "%";
@@ -127,7 +127,7 @@ public class Janela_3_Controller {
             lbAjusteAp.setText(textaj);
             tabelaItens.refresh();
         } catch(Exception e) {
-            Alertas.showAlert("Erro", "Campos incompletos", "Digite o ajusto e marque a opção desejada", Alert.AlertType.WARNING);
+            Alertas.showAlert("Erro", "Campos incompletos", "Digite o ajuste e marque a opção desejada", Alert.AlertType.WARNING);
             }
         textValor.clear();
         rbtDesconto.setSelected(false);
@@ -149,7 +149,7 @@ public class Janela_3_Controller {
         tabelaItens.refresh();
     }
 
-    private <S, T> void mostrarTextoOculto(TableColumn<S, T> coluna) {
+    public static <S, T> void mostrarTextoOculto(TableColumn<S, T> coluna) {
         coluna.setCellFactory(tc -> {
             TableCell<S, T> cell = new TableCell<>();
             Tooltip tooltip = new Tooltip();

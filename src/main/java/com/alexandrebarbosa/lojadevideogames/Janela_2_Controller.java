@@ -2,12 +2,16 @@ package com.alexandrebarbosa.lojadevideogames;
 
 import entidades.Jogo;
 import entidades.ListaJogo;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,12 +38,15 @@ public class Janela_2_Controller implements Initializable {
     private TextField texto8;
     @FXML
     private Label label1;
+    @FXML
+    private Button btAdicionar;
 
     @FXML
     protected void Voltar(ActionEvent event) throws IOException {
         Navegacao.remover();
         Navegacao.caminho(event);
     }
+
     @FXML
     public void adicionarInfo() {
         try {
@@ -60,9 +67,9 @@ public class Janela_2_Controller implements Initializable {
                 limpar();
             } else {
                 listaJogos.adicionarInicio(jogo);
-                label1.setText("JOGO ADICIONADO!");
-                if(Historico.test%2!=0) {
-                Historico.inverter();
+                mostrarMensagemSucesso("JOGO ADICIONADO COM SUCESSO!", label1);
+                if (Historico.test % 2 != 0) {
+                    Historico.inverter();
                 }
                 Historico.add(new Jogo(
                         jogo.getCodigo(),
@@ -86,8 +93,30 @@ public class Janela_2_Controller implements Initializable {
         Limitacoes.setTextFieldDouble(texto6);
         Limitacoes.setTextFieldDouble(texto7);
         Limitacoes.setTextFieldInteger(texto8);
+        pularTextField(texto1, texto2);
+        pularTextField(texto2, texto3);
+        pularTextField(texto3, texto4);
+        pularTextField(texto4, texto5);
+        pularTextField(texto5, texto6);
+        pularTextField(texto6, texto7);
+        pularTextField(texto7, texto8);
+        texto8.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                btAdicionar.fire();
+                texto1.requestFocus();
+                event.consume();
+            }
+        });
 
+    }
 
+    public static void pularTextField(TextField texto, TextField proxTexto) {
+        texto.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                proxTexto.requestFocus();
+                event.consume();
+            }
+        });
     }
 
     public void limpar() {
@@ -99,5 +128,17 @@ public class Janela_2_Controller implements Initializable {
         texto6.clear();
         texto7.clear();
         texto8.clear();
+    }
+
+
+    public static void mostrarMensagemSucesso(String mensagem, Label label) {
+        label.setText(mensagem);
+        label.setOpacity(1.0);
+
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), label);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        fadeOut.play();
     }
 }

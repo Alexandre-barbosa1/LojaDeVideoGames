@@ -8,12 +8,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.mostrarMensagemSucesso;
+import static com.alexandrebarbosa.lojadevideogames.Janela_2_Controller.pularTextField;
 
 public class Janela_5_Controller implements Initializable {
     Jogo jogoAtual = null;
@@ -33,6 +37,8 @@ public class Janela_5_Controller implements Initializable {
     private TextField texto8;
     @FXML
     private Label label1;
+    @FXML
+    private Button btEditar;
 
     @FXML
     protected void Voltar(ActionEvent event) throws IOException {
@@ -58,7 +64,7 @@ public class Janela_5_Controller implements Initializable {
             jogoAtual.setValorEntrada(valorEntrada);
             jogoAtual.setValorSaida(valorSaida);
             jogoAtual.setValorOriginal(valorSaida);
-            label1.setText("JOGO editado com sucesso!");
+            mostrarMensagemSucesso("JOGO EDITADO COM SUCESSO!", label1);
         } catch (
                 NumberFormatException e) {
             Alertas.showAlert("Erro", "Campos incompletos", "Digite todos os campos", Alert.AlertType.WARNING);
@@ -71,16 +77,19 @@ public class Janela_5_Controller implements Initializable {
         Limitacoes.setTextFieldDouble(texto7);
         Limitacoes.setTextFieldInteger(texto8);
         mostrarJogo();
-    }
-
-    public void limpar() {
-        texto2.clear();
-        texto3.clear();
-        texto4.clear();
-        texto5.clear();
-        texto6.clear();
-        texto7.clear();
-        texto8.clear();
+        pularTextField(texto2, texto3);
+        pularTextField(texto3, texto4);
+        pularTextField(texto4, texto5);
+        pularTextField(texto5, texto6);
+        pularTextField(texto6, texto7);
+        pularTextField(texto7, texto8);
+        texto8.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                btEditar.fire();
+                texto2.requestFocus();
+                event.consume();
+            }
+        });
     }
 
     public void mostrarJogo() {

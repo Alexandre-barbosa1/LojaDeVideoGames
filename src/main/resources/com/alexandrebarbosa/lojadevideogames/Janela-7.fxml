@@ -7,14 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_7_Controller">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" stylesheets="@../../../Estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_7_Controller">
    <children>
        <TableView fx:id="tabelaVendas" layoutX="15.0" layoutY="58.0" prefHeight="383.0" prefWidth="470.0">
            <columns>
-               <TableColumn fx:id="colunaCodigoVendas" prefWidth="75.0" text="Código" />
-               <TableColumn fx:id="colunaNomeVendas" prefWidth="160.0" text="Nome" />
-            <TableColumn fx:id="colunaQuantidadeVendas" prefWidth="138.0" text="Quantidade de Vendas" />
-            <TableColumn fx:id="colunaMontante" prefWidth="96.0" text="Montante" />
+               <TableColumn fx:id="colunaCodigoVendas" prefWidth="66.0" text="Código" />
+               <TableColumn fx:id="colunaNomeVendas" prefWidth="157.0" text="Nome" />
+            <TableColumn fx:id="colunaQuantidadeVendas" prefWidth="136.0" text="Quantidade de Vendas" />
+            <TableColumn fx:id="colunaMontante" prefWidth="108.0" text="Montante" />
            </columns>
        </TableView>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Voltar" text="Voltar" />

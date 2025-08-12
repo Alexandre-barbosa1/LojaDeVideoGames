@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_8_Controller">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" stylesheets="@../../../Estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alexandrebarbosa.lojadevideogames.Janela_8_Controller">
     <TableView fx:id="historico" layoutX="15.0" layoutY="58.0" prefHeight="425.0" prefWidth="470.0">
         <columns>
             <TableColumn fx:id="colunaCodigo" prefWidth="53.0" text="Código" />
@@ -19,5 +19,5 @@
         </columns>
     </TableView>
     <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Voltar" text="Voltar" />
-   <Button fx:id="btOrdenarRecente" layoutX="333.0" layoutY="14.0" mnemonicParsing="false" onAction="#btOrdenarRecente" prefWidth="152.0" text="Ordenar por mais recente" />
+   <Button fx:id="btOrdenarRecente" layoutX="327.0" layoutY="14.0" mnemonicParsing="false" onAction="#btOrdenarRecente" prefWidth="158.0" text="Ordenar por mais recente" />
 </AnchorPane>

@@ -12,8 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import static com.alexandrebarbosa.lojadevideogames.Janela_3_Controller.mostrarTextoOculto;
 
 public class Janela_4_Controller {
     static Jogo jogoBuscado = null;
@@ -30,7 +30,6 @@ public class Janela_4_Controller {
     private Button btnBuscarNome;
     @FXML
     private Button btnBuscarCodigo;
-
     @FXML
     private TextField texto1;
     @FXML
@@ -68,6 +67,14 @@ public class Janela_4_Controller {
         colunaValorEntrada.setCellValueFactory(new PropertyValueFactory<>("valorEntrada"));
         colunaValorSaida.setCellValueFactory(new PropertyValueFactory<>("valorSaida"));
         colunaQuantidadeEstoque.setCellValueFactory(new PropertyValueFactory<>("quantidadeEstoque"));
+        mostrarTextoOculto(colunaCodigo);
+        mostrarTextoOculto(colunaNome);
+        mostrarTextoOculto(colunaGenero);
+        mostrarTextoOculto(colunaMarca);
+        mostrarTextoOculto(colunaDescricao);
+        mostrarTextoOculto(colunaValorEntrada);
+        mostrarTextoOculto(colunaValorSaida);
+        mostrarTextoOculto(colunaQuantidadeEstoque);
     }
 
     @FXML

@@ -64,13 +64,16 @@ public class Janela_5_Controller implements Initializable {
             jogoAtual.setValorEntrada(valorEntrada);
             jogoAtual.setValorSaida(valorSaida);
             jogoAtual.setValorOriginal(valorSaida);
-            mostrarMensagemSucesso("JOGO EDITADO COM SUCESSO!", label1);
+            if (testarCamposPreenchidos(nome, genero, marca, descricao)) {
+                Alertas.showAlert("Erro", "Campos incompletos", "Digite todos os campos", Alert.AlertType.WARNING);
+            } else {
+                mostrarMensagemSucesso("JOGO EDITADO COM SUCESSO!", label1);
+            }
         } catch (
                 NumberFormatException e) {
             Alertas.showAlert("Erro", "Campos incompletos", "Digite todos os campos", Alert.AlertType.WARNING);
         }
     }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Limitacoes.setTextFieldDouble(texto6);
@@ -102,5 +105,14 @@ public class Janela_5_Controller implements Initializable {
         texto7.setText(String.valueOf(jogoAtual.getValorSaida()));
         texto8.setText(String.valueOf(jogoAtual.getQuantidadeEstoque()));
 
+    }
+
+    public boolean testarCamposPreenchidos(String nome, String genero, String marca, String descricao) {
+        if (nome.equalsIgnoreCase("") ||
+                genero.equalsIgnoreCase("") ||
+                descricao.equalsIgnoreCase("") || marca.equalsIgnoreCase("")) {
+            return true;
+        }
+        return false;
     }
 }

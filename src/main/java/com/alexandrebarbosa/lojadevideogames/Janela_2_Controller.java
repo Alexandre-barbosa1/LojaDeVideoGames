@@ -65,6 +65,9 @@ public class Janela_2_Controller implements Initializable {
             if (ListaJogo.testarSeExisteCodigo(codigo)) {
                 Alertas.showAlert("Erro", "Codigo ja inserido", "Digite um código válido", Alert.AlertType.WARNING);
                 limpar();
+            } else if (testarCamposPreenchidos(codigo, nome, genero, marca, descricao)) {
+                Alertas.showAlert("Erro", "Campos incompletos", "Digite todos os campos", Alert.AlertType.WARNING);
+                limpar();
             } else {
                 listaJogos.adicionarInicio(jogo);
                 mostrarMensagemSucesso("JOGO ADICIONADO COM SUCESSO!", label1);
@@ -140,5 +143,14 @@ public class Janela_2_Controller implements Initializable {
         fadeOut.setToValue(0.0);
 
         fadeOut.play();
+    }
+
+    public boolean testarCamposPreenchidos(String codigo, String nome, String genero, String marca, String descricao) {
+        if (codigo.equalsIgnoreCase("") || nome.equalsIgnoreCase("") ||
+                genero.equalsIgnoreCase("") ||
+                descricao.equalsIgnoreCase("") || marca.equalsIgnoreCase("")) {
+            return true;
+        }
+        return false;
     }
 }

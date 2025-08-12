@@ -18,6 +18,7 @@ public class ListaJogo {
         }
     }
 
+
     public void adicionarFim(Jogo novo) {
         if (inicio == null) {
             inicio = novo;
@@ -58,7 +59,6 @@ public class ListaJogo {
     public static Jogo buscarjogoPorNome(String codigo) {
         Jogo aux = inicio;
         if (inicio == null) {
-
             return null;
         } else {
             while (aux != null) {
@@ -82,7 +82,7 @@ public class ListaJogo {
         return false;
     }
 
-    public Jogo get(int indice) {
+    public static Jogo get(int indice) {
         Jogo aux = inicio;
         int contador = 0;
         while (aux != null) {
@@ -93,7 +93,7 @@ public class ListaJogo {
         return null;
     }
 
-    public void set(int indice, Jogo novo) {
+    public static void set(int indice, Jogo novo) {
         Jogo aux = inicio;
         int contador = 0;
         while (aux != null) {
@@ -113,7 +113,7 @@ public class ListaJogo {
         }
     }
 
-    public int tamanho() {
+    public static int tamanho() {
         int count = 0;
         Jogo aux = inicio;
         while (aux != null) {

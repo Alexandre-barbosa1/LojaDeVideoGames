@@ -57,6 +57,7 @@ public class Janela_5_Controller implements Initializable {
             jogoAtual.setQuantidadeEstoque(quantidade);
             jogoAtual.setValorEntrada(valorEntrada);
             jogoAtual.setValorSaida(valorSaida);
+            jogoAtual.setValorOriginal(valorSaida);
             label1.setText("JOGO editado com sucesso!");
         } catch (
                 NumberFormatException e) {
